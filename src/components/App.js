@@ -7,6 +7,7 @@ import {fetchGenres} from "../store/domains/common/common.actions"
 import {SnackbarProvider} from "notistack"
 import Navbar from "./Navbar"
 import Page404 from "./Page404"
+import Favorites from "./Favorites"
 
 function App(props) {
     const {isLoading, location, fetchGenres} = props
@@ -27,6 +28,7 @@ function App(props) {
             <Navbar onMenu={() => setShowSidebar(!showSidebar)}/>
             <Switch>
                 <Route component={Page404}/>
+                <Route path="/favorites" component={Favorites}/>
             </Switch>
         </SnackbarProvider>
     );
