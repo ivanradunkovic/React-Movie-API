@@ -11,11 +11,24 @@ import IconButton from "@material-ui/core/IconButton"
 import {Menu as MenuIcon} from "@material-ui/icons"
 import Typography from "@material-ui/core/Typography"
 import {Link} from "react-router-dom"
+import {makeStyles} from "@material-ui/core"
 
+const useStyles = makeStyles(theme => ({
+    list: {
+        width: 250
+    },
+    brand: {
+        textDecoration: 'none',
+        color: 'inherit'
+    },
+}))
 
 function Sidebar({open, onClose}) {
+    const classes = useStyles()
 
     return (
+        <Drawer anchor="left" variant="temporary" open={open} onClose={onClose}>
+            <List className={classes.list}>
                 <ListItem button key="favorite">
                     <IconButton onClick={onClose} edge="start" color="inherit" aria-label="menu">
                         <MenuIcon/>
@@ -33,6 +46,8 @@ function Sidebar({open, onClose}) {
                     <ListItemIcon><VisibilityIcon/></ListItemIcon>
                     <ListItemText primary="Visited" />
                 </ListItem>
+            </List>
+        </Drawer>
     )
 }
 

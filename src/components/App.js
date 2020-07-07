@@ -8,6 +8,7 @@ import {SnackbarProvider} from "notistack"
 import Navbar from "./Navbar"
 import Page404 from "./Page404"
 import Favorites from "./Favorites"
+import Sidebar from "./Sidebar"
 
 function App(props) {
     const {isLoading, location, fetchGenres} = props
@@ -26,9 +27,10 @@ function App(props) {
             <CssBaseline/>
             {isLoading && <LinearProgress style={{position: 'fixed', top: 0, width: '100%', zIndex: 9999}}/>}
             <Navbar onMenu={() => setShowSidebar(!showSidebar)}/>
+            <Sidebar open={showSidebar} onClose={() => setShowSidebar(!showSidebar)} />
             <Switch>
-                <Route component={Page404}/>
                 <Route path="/favorites" component={Favorites}/>
+                <Route component={Page404}/>
             </Switch>
         </SnackbarProvider>
     );
